@@ -1,7 +1,7 @@
 [![CI](https://github.com/infrasonar/selenium-probe/workflows/CI/badge.svg)](https://github.com/infrasonar/selenium-probe/actions)
 [![Release Version](https://img.shields.io/github/release/infrasonar/selenium-probe)](https://github.com/infrasonar/selenium-probe/releases)
 
-# InfraSonar HTTP Probe
+# InfraSonar Selenium Probe
 
 Documentation: https://docs.infrasonar.com/collectors/probes/selenium/
 
@@ -26,7 +26,21 @@ Variable            | Default                        | Description
 docker build -t selenium-probe . --no-cache
 ```
 
+## Config
+
+No config is required but you might want to set a password and/or secret for usage in your script.
+
+```
+selenium:
+  config:
+    password: myPassword
+    secret: mySecret
+```
+
 ## Dry run
 
 Dry run for this collector is not possible. Instead, use the `infrasonar-selenium` test suite to build a test script.
-# selenium-probe
+
+## Creating tests
+
+See https://github.com/infrasonar/selenium for building InfraSonar Selenium tests.

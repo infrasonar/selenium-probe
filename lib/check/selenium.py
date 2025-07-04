@@ -47,6 +47,7 @@ async def check_selenium(
                         f'The `export` in file ID {file_id} is not a valid '
                         f'subclass of `TestBase` (error: {msg})')
                 else:
+                    item['file_id'] = file_id  # int
                     items.append(item)
             finally:
                 os.environ.pop('PASSWORD', None)

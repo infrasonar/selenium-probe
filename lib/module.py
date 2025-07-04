@@ -1,8 +1,7 @@
+import logging
 import importlib.util
 import os.path
 from .probe import get_probe
-
-_scripts = {}
 
 
 # Function to dynamically import a module given its full path
@@ -42,6 +41,11 @@ async def get_module(file_id: int):
 
     module = import_module_from_path(module_path)
     try:
+        logging.debug(dir(module))
+        with open(module_path, 'r') as fp:
+            data = fp.read()
+            logging.debug(data)
+
         assert module.export.__bases__[0].__name__ == 'TestBase'
     except Exception:
         raise Exception(

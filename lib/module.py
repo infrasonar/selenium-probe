@@ -41,9 +41,11 @@ async def get_module(file_id: int):
                 f'Failed to write content for file ID {file_id}: {e}')
 
     module = import_module_from_path(module_path)
-    if not hasattr(module, 'export'):
+    try:
+        assert module.export.__bases__[0].__name__ == 'TestBase'
+    except Exception:
         raise Exception(
-            f'File ID {file_id} script is missing export. '
-            'For example: `export = MyTest`')
+            f'File ID {file_id} script is missing export to a `TestBase` '
+            'subclass. For example: `export = MyTest`')
 
     return module

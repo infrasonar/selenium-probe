@@ -28,7 +28,7 @@ async def get_module(file_id: int):
     if not os.path.isfile(module_path):
         blob = await get_probe().download_file(file_id=file_id)
         try:
-            content = str(blob)
+            content = blob.decode()
         except Exception:
             raise Exception(f'File ID {file_id} is not UTF-8 encoded')
 
@@ -41,11 +41,6 @@ async def get_module(file_id: int):
 
     module = import_module_from_path(module_path)
     try:
-        logging.debug(dir(module))
-        with open(module_path, 'r') as fp:
-            data = fp.read()
-            logging.debug(data)
-
         assert module.export.__bases__[0].__name__ == 'TestBase'
     except Exception:
         raise Exception(

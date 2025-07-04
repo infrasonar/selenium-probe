@@ -1,2 +1,2 @@
-libprobe==1.0.0
+libprobe==1.0.1
 infrasonar_selenium==1.0.2

@@ -38,9 +38,10 @@ async def check_selenium(
                     command_executor=COMMAND_EXECUTER)
 
                 try:
-                    item = module.export.run(driver=driver)
+                    item = module.export.run(name=str(file_id), driver=driver)
                 except Exception as e:
-                    # When `run() is correct, it can't fail`
+                    # When `run() is correct, it can't fail` as potential
+                    # errors will be part of the result
                     msg = str(e) or type(e).__name__
                     raise Exception(
                         f'The `export` in file ID {file_id} is not a valid '

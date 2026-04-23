@@ -1,2 +1,2 @@
-libprobe==1.0.1
-infrasonar_selenium==1.0.2
+libprobe==2.0.6
+infrasonar_selenium==1.0.2  # TODO v1.0.2-139.0-20250808?

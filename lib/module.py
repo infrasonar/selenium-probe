@@ -5,7 +5,7 @@ from .probe import get_probe
 
 
 # Function to dynamically import a module given its full path
-def import_module_from_path(path):
+def import_module_from_path(path: str):
     # Create a module spec from the given path
     spec = importlib.util.spec_from_file_location("module_name", path)
     if spec is None or spec.loader is None:
